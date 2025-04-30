@@ -1,0 +1,17 @@
+name: OWASP ZAP Scan
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  zap_scan:
+    name: Run ZAP Baseline Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0.9.0
+        with:
+          target: 'https://ci-cd-flask-app.onrender.com'
